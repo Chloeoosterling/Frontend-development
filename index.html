@@ -1,21 +1,462 @@
-<!DOCTYPE html>
-<html lang="nl">
-	
+<!doctype html>
+<html lang="nl" dir="ltr">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="author" content="jouw naam">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<title>Howdy FED2526</title>
-	
-	<link href="styles/style.css" rel="stylesheet">
-	<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="jouw naam" />
+  <title>Fender – Toegankelijke Homepage (Replica)</title>
+  <link rel="icon" type="image/jpeg" href="images/fender-favicon.jpg" />
+  <link href="styles/style.css" rel="stylesheet" />
+  <script src="scripts/script.js" defer></script>
 </head>
 
 <body>
-	<h1>Howdy FED2526</h1>
+  <!-- ===== HEADER ===== -->
+  <header role="banner">
+    <!-- 1) Promotiebalk -->
+    <section role="region" aria-label="Promotie">
+      <p><strong>NEW:</strong> Limited edition Vintera || Road Worn</p>
+      <button id="right" aria-label="Volgende promotie">⃗</button>
+      <button id="left" aria-label="Vorige promotie">⃖</button>
+    </section>
 
-	<script defer src="scripts/script.js"></script>
+    <!-- 2) Topbar: logo / desktopnav / zoeken / account / cart / hamburger -->
+    <section>
+
+
+      <a href="#" aria-label="Fender home">
+        <img src="images/fender_logo_1.svg" alt="Fender" />
+      </a>
+
+
+
+      <!-- Scrim en drawer -->
+
+
+
+      <div id="scrim" hidden></div>
+
+      <nav id="site-menu" aria-label="Hoofd navigatie" hidden>
+        <div>
+          <img src="images/fender_logo_1.svg" alt="Fender" width="96" height="28" />
+          <button type="button" aria-label="Sluit menu">✕</button>
+        </div>
+        <p><strong>SALE: Back to School</strong></p>
+        <ul>
+          <li><a href="#new">New & Trending</a></li>
+          <li><a href="#modshop">Mod Shop</a></li>
+          <li><a href="#electric">Electric Guitars</a></li>
+          <li><a href="#basses">Basses</a></li>
+          <li><a href="#acoustics">Acoustics</a></li>
+          <li><a href="#squier">Squier</a></li>
+          <li><a href="#amps">Amplifiers & Effects</a></li>
+          <li><a href="#parts">Parts</a></li>
+          <li><a href="#accessories">Accessories & Merch</a></li>
+        </ul>
+      </nav>
+
+      <!-- Desktop hoofdnavigatie -->
+      <nav aria-label="Hoofd navigatie">
+        <ul>
+          <li><a href="#guitars">Gitaren</a></li>
+          <li><a href="#basses">Bassen</a></li>
+          <li><a href="#amps">Versterkers</a></li>
+          <li><a href="#shop">Shop</a></li>
+        </ul>
+      </nav>
+
+      <!-- Zoeken -->
+      <form role="search" aria-label="Zoeken op site">
+        <input type="search" name="q" placeholder="What can we help you find?" aria-label="Zoekterm" />
+
+      </form>
+
+      <!-- Icons -->
+      <a href="#locator" aria-label="Winkels">📍</a>
+      <a href="#account" aria-label="Account">👤</a>
+      <a href="#cart" aria-label="Winkelwagen"><span aria-live="polite">🛒 0</span></a>
+
+      <button type="button" aria-label="Menu" aria-controls="site-menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+    </section>
+
+    <!-- 3) Hero in header (zoals jouw huidige structuur) -->
+    <section>
+      <img src="images/headerbanner.jpg.webp" alt="Banner back to school" />
+      <section class="banner">
+        <h2>Up to 20% off</h2>
+        <p><strong>School's Back. Plug In.</strong></p>
+        <p>Rock the new school year, learn new skills or develop hobbies with great savings on guitars, amps &amp; more.
+        </p>
+        <button>Shop Now</button>
+      </section>
+    </section>
+
+  </header>
+  <!-- ===== MAIN ===== -->
+  <main>
+    <!-- Pills nav -->
+    <nav aria-label="Categorieën">
+      <ul>
+        <li><a href="#">New Releases</a></li>
+        <li><a href="#">Best Sellers</a></li>
+        <li><a href="#">Web Exclusives</a></li>
+        <li><a href="#">Mod Shop</a></li>
+        <li><a href="#">Beginner Guitars & Basses</a></li>
+        <li><a href="#">Limited Editions</a></li>
+        <li><a href="#">Artist Signature</a></li>
+        <li><a href="#">Accessories</a></li>
+      </ul>
+    </nav>
+
+    <!-- Sectie 1: Back to School producten -->
+    <section>
+      <h2>Back to School - Up to 20% off</h2>
+
+      <section>
+        <article>
+          <img src="images/squiergitaar voorkant.png.avif" alt="Squier Mini Stratocaster" />
+          <p>Squier</p>
+          <h3>Mini Stratocaster</h3>
+          <p><s>€175</s> <strong>€140</strong></p>
+        </article>
+
+        <article>
+          <img src="images/Gitaar tas 2.avif" alt="FE405 Electric Gig Bag" />
+          <h3>FE405 Electric Gig Bag</h3>
+          <p><s>€26,99</s> <strong>€24,30</strong></p>
+        </article>
+
+        <article>
+          <img src="images/Gelegitaar3.avif" alt="Affinity Series Telecaster Thinline" />
+          <p>Squier</p>
+          <h3>Affinity Series Telecaster Thinline</h3>
+          <p><s>€295</s> <strong>€236</strong></p>
+        </article>
+
+        <article>
+          <img src="images/Rode gitaar 4.avif" alt="Affinity Series Telecaster FMT SH" />
+          <p>Squier</p>
+          <h3>Affinity Series Telecaster FMT SH</h3>
+          <p><s>€295</s> <strong>€236</strong></p>
+        </article>
+
+        <article>
+          <img src="images/gele gitaar 5.avif" alt="Affinity Series Stratocaster Junior HSS" />
+          <p>Squier</p>
+          <h3>Affinity Series Stratocaster Junior HSS</h3>
+          <p><s>€259</s> <strong>€207,20</strong></p>
+        </article>
+
+        <article>
+          <img src="images/Roze gitaar 6.avif" alt="Limited Edition Squier Sonic Stratocaster" />
+          <p>Squier</p>
+          <h3>Limited Edition Squier Sonic Stratocaster</h3>
+          <p><s>€209,99</s> <strong>€168</strong></p>
+        </article>
+      </section>
+    </section>
+
+    <!-- Sectie 2: Top Models -->
+    <section>
+      <h2>Top Models</h2>
+      <section>
+        <article>
+          <img src="images/Blauw section 2.avif" alt="Stratocaster" />
+          <span>Stratocaster</span>
+        </article>
+
+        <article>
+          <img src="images/Rood section 2.avif" alt="Telecaster" />
+          <span>Telecaster</span>
+
+        </article>
+
+        <article>
+          <img src="images/Groen section 2.avif" alt="Jazzmaster" />
+          <span>Jazzmaster</span>
+
+        </article>
+
+        <article>
+          <img src="images/Zwart section 2.avif" alt="Jaguar" />
+          <span>Jaguar</span>
+
+        </article>
+      </section>
+    </section>
+
+    <!-- Sectie 3: 2 brede visuals -->
+    <section>
+      <article>
+        <img src="images/section 3.webp" alt="American Ultra Luxe Vintage Series" />
+
+        <p>Trending</p>
+        <p>American Ultra Luxe Vintage Series</p>
+      </article>
+
+      <article>
+        <img src="images/section 4.webp" alt="Squier Classic Vibe Series" />
+
+        <p>New Releases</p>
+        <p>Squier Classic Vibe Series</p>
+      </article>
+    </section>
+
+    <!-- Sectie 4: Beginner Essentials -->
+    <h2>Beginner Essentials</h2>
+    <nav>
+      <ul>
+        <li><a href="#">Beginner Guitars & Basses</a></li></button>
+        <li><a href="#">Beginner Amps</a></li>
+        <li><a href="#">Bundles & Packs</a></li>
+      </ul>
+    </nav>
+
+    <section>
+      <section>
+        <article>
+          <img src="images/squiergitaar voorkant.png.avif" alt="Squier Mini Stratocaster" />
+          <p>Squier</p>
+          <h3>Mini Stratocaster</h3>
+          <p><s>€175</s> <strong>€140</strong></p>
+        </article>
+
+        <article>
+          <img src="images/Gitaar tas 2.avif" alt="FE405 Electric Gig Bag" />
+          <h3>FE405 Electric Gig Bag</h3>
+          <p><s>€26,99</s> <strong>€24,30</strong></p>
+        </article>
+
+        <article>
+          <img src="images/Gelegitaar3.avif" alt="Affinity Series Telecaster Thinline" />
+          <p>Squier</p>
+          <h3>Affinity Series Telecaster Thinline</h3>
+          <p><s>€295</s> <strong>€236</strong></p>
+        </article>
+
+        <article>
+          <img src="images/Rode gitaar 4.avif" alt="Affinity Series Telecaster FMT SH" />
+          <p>Squier</p>
+          <h3>Affinity Series Telecaster FMT SH</h3>
+          <p><s>€295</s> <strong>€236</strong></p>
+        </article>
+
+        <article>
+          <img src="images/gele gitaar 5.avif" alt="Affinity Series Stratocaster Junior HSS" />
+          <p>Squier</p>
+          <h3>Affinity Series Stratocaster Junior HSS</h3>
+          <p><s>€259</s> <strong>€207,20</strong></p>
+        </article>
+
+        <article>
+          <img src="images/Roze gitaar 6.avif" alt="Limited Edition Squier Sonic Stratocaster" />
+          <p>Squier</p>
+          <h3>Limited Edition Squier Sonic Stratocaster</h3>
+          <p><s>€209,99</s> <strong>€168</strong></p>
+        </article>
+      </section>
+    </section>
+
+    </section>
+
+    <!-- Sectie 5: Mod Shop split -->
+    <section>
+      <article>
+        <img src="images/Donkerblauw-lichtblauw.png" alt="donkerblauw">
+
+        <img src="images/Fender-ModShop-Logo.png" alt="Fender Mod Shop">
+        <h3>Meet Dark Night & Miami Blue</h3>
+        <p>New color options just hit in the Mod Shop. Build your dream Fender with these bold new finishes.</p>
+        <button>Start Building</button>
+      </article>
+    </section>
+
+    <!-- Sectie 6: Squier band -->
+    <section>
+      <img src="images/Paarse gitaar.avif" alt="paarse gitaar">
+      <h4>Bold New Squier Finishes</h4>
+      <p>Discover one-of-a-kind instruments and gear. Shop limited-edition Squier releases &amp; online-only deals.</p>
+      <button>Shop Now</button>
+    </section>
+
+    <!-- Sectie 7: Artist program banner -->
+    <section>
+      <article>
+        <img src="images/2 gitaren spelen.png" alt="2 gitaren">
+        <img src="images/Web_Fender_Fender_Next_Shop_Assets___Thumbnails_SkinnyBanner_Logo.png" alt="Fender Next" />
+        <p>Our artist development program, designed to elevate rising artists who are shaping the future of guitar in
+          music and culture.</p>
+        <button><strong>Learn More</strong></button>
+      </article>
+    </section>
+
+    <!-- Sectie 8: (lege ruimte / future content) -->
+    <section>
+      <article>
+        <img src="images/Check.png.avif" alt="">
+        <p>Fender-certified high quality assurance</p>
+      </article>
+      <article>
+        <img src="images/Bestelbus.png.avif" alt="">
+        <p>Free standard shipping on all orders over 49€.</p>
+      </article>
+      <article>
+        <img src="images/returns-icon.png.avif" alt="">
+        <p>Easy returns & exchanges within 30 days of receipt</p>
+      </article>
+
+      <article>
+        <img src="images/support-icon.png.avif" alt="">
+        <p>Get support from our expert gear advisor</p>
+      </article>
+    </section>
+
+    <!-- Sectie 9: Accessories/Parts/Merch/Collab -->
+    <section>
+      <article>
+        <figure><img src="images/Fender x third Man.webp" alt="Fender x Third Man" /></figure>
+        <p>Fender x Third Man</p>
+      </article>
+      <article>
+        <figure><img src="images/Parts.avif" alt="Parts" /></figure>
+        <p>Parts</p>
+      </article>
+      <article>
+        <figure><img src="images/Accessories.webp" alt="Accessories" /></figure>
+        <p>Accessories</p>
+
+      </article>
+      <article>
+        <figure><img src="images/Merch.webp" alt="Merch" /></figure>
+        <p>Merch</p>
+      </article>
+    </section>
+
+    <!-- Sectie 10: Fender Studio (donker) -->
+    <section>
+      <article>
+        <img src="images/digitale apparaten.png" alt="laptop,telefoon,ipad">
+        <img src="images/Fender Studio.png" alt="Fender Studio" />
+        <h5>Record. Jam. Create.</h5>
+        <p>Capture ideas anywhere with authentic Fender tone — for free.</p>
+        <a href="#">Learn More</a>
+      </article>
+    </section>
+
+    <!-- Sectie 11: Trending filters -->
+    <section>
+      <h4>Trending</h4>
+      <nav>
+        <ul>
+          <li> <a href="#">Limited Edition</a></li>
+          <li><a href="#">Artist Signature</a></li>
+          <li><a href="#">Web Exclusives</a></li>
+        </ul>
+      </nav>
+
+      <section>
+        <section>
+          <article>
+            <img src="images/squiergitaar voorkant.png.avif" alt="Squier Mini Stratocaster" />
+            <p>Squier</p>
+            <h3>Mini Stratocaster</h3>
+            <p><s>€175</s> <strong>€140</strong></p>
+          </article>
+
+          <article>
+            <img src="images/Gitaar tas 2.avif" alt="FE405 Electric Gig Bag" />
+            <h3>FE405 Electric Gig Bag</h3>
+            <p><s>€26,99</s> <strong>€24,30</strong></p>
+          </article>
+
+          <article>
+            <img src="images/Gelegitaar3.avif" alt="Affinity Series Telecaster Thinline" />
+            <p>Squier</p>
+            <h3>Affinity Series Telecaster Thinline</h3>
+            <p><s>€295</s> <strong>€236</strong></p>
+          </article>
+
+          <article>
+            <img src="images/Rode gitaar 4.avif" alt="Affinity Series Telecaster FMT SH" />
+            <p>Squier</p>
+            <h3>Affinity Series Telecaster FMT SH</h3>
+            <p><s>€295</s> <strong>€236</strong></p>
+          </article>
+
+          <article>
+            <img src="images/gele gitaar 5.avif" alt="Affinity Series Stratocaster Junior HSS" />
+            <p>Squier</p>
+            <h3>Affinity Series Stratocaster Junior HSS</h3>
+            <p><s>€259</s> <strong>€207,20</strong></p>
+          </article>
+
+          <article>
+            <img src="images/Roze gitaar 6.avif" alt="Limited Edition Squier Sonic Stratocaster" />
+            <p>Squier</p>
+            <h3>Limited Edition Squier Sonic Stratocaster</h3>
+            <p><s>€209,99</s> <strong>€168</strong></p>
+          </article>
+        </section>
+      </section>
+
+    </section>
+
+    <!-- Sectie 12: Spotlight Stories (donker) -->
+    <section>
+      <h5>Spotlight Stories</h5>
+    
+      <section>
+        <article>
+          <p>Parts and Accessories</p>
+          <img src="images/Web_Fender_062625_Fender_Studio_LinkIO_Mustang_MicroPlus_ARTICLE.webp" alt="parts and Accessories">
+          <p>How to use Fender Studio with compatible interfaces: A quick start guide</p>
+        </article>
+    
+        <article>
+          <p>Instruments</p>
+          <img src="images/Web_Fender_061725_Richie_Kotzen_Demo_Video_Article.webp" alt="">
+          <p>Exploring the Richie Kotzen Stratocaster</p>
+        </article>
+    
+        <article>
+          <p>Fender performances</p>
+          <img src="images/Web_Fender_061025_Khruangbin_Band_Performance_Video_Article_Article.webp" alt="">
+          <p>Chasing the Khruangbin sound</p>
+        </article>
+      </section>
+    
+      <button>View All Articles</button>
+    </section>
+    
+
+    <!-- Sectie 13: Heritage -->
+    <section>
+      <h6>1943</h6>
+      <p>The world's leading guitar manufacturer</p>
+      <img src="images/Fender oud.avif" alt="Historic Fender factory" />
+      <p>An American icon. Nearly seven decades since founder Leo Fender built his first electric guitar, Fender’s reach transcends instruments and accessories, encompassing a range of innovative digital experiences that fuel musical expression and serve players at every stage–on every stage.</p>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer role="contentinfo">
+    <div>
+      <nav aria-label="Footer">
+        <ul style="display:flex;flex-wrap:wrap;gap:1rem;list-style:none;padding:0;margin:0">
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Over</a></li>
+          <li><a href="#">Privacy</a></li>
+        </ul>
+      </nav>
+      <p>© Fender – demo replica. Geen officiële site.</p>
+    </div>
+  </footer>
 </body>
-	
+
 </html>

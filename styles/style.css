@@ -1,31 +1,1368 @@
 /**************/
 /* CSS REMEDY */
 /**************/
-*, *::after, *::before {
-  box-sizing:border-box;  
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
 }
 
-
-
-
-
+html,
+body {
+	margin: 0;
+}
 
 /*********************/
-/* CUSTOM PROPERTIES */
+/* DESIGN TOKENS */
 /*********************/
 :root {
-	/* startje */
-	--color-text:#111;
-	--color-background:#eee;
+	--container: 1200px;
+	--gap: clamp(16px, 2.5vw, 24px);
+	--radius: 12px;
+	--text: #111;
+	--muted: #6b7280;
+	--bg: #fff;
+	--band: #f5f5f5;
+	--dark: #0b0b0c;
+	--darkText: #fff;
+}
+
+/*********************/
+/* BASIS */
+/*********************/
+body {
+	font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+	color: var(--text);
+	background: var(--bg);
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+button,
+input,
+select {
+	font: inherit;
+}
+
+:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+header section[aria-label="Promotie"] {
+	background: #111;
+	color: #fff;
+	display: grid;
+	grid-template-columns: 1fr 3fr 1fr;
+	gap: .5rem;
+	font-size: .9rem;
+
+}
+
+button#right {
+	grid-row-start: 1;
+}
+
+/* Centrale contentbreedte voor main */
+main {
+	max-width: var(--container);
+	margin-inline: auto;
+
+}
+
+/*********************/
+/* HEADER */
+/*********************/
+
+/* 1) Promotiebalk: eerste <section> in header */
+header section:first-of-type {
+	color: #fff;
+	display: grid;
+	grid-template-columns: 1fr 3fr 1fr;
+	align-items: center;
+	gap: .5rem;
+	padding: .4rem var(--gap);
+}
+
+header section:first-of-type p {
+	margin: 0 auto;
+	/* text-align: center; */
+	justify-self: center;
+	font-size: .9rem;
+	grid-column-start: 2;
+}
+
+header section:nth-of-type(1) p {
+	text-align: center;
+}
+
+header section:first-of-type button {
+	background: transparent;
+	border: 0;
+	color: #fff;
+	cursor: pointer;
+	font-size: 1.1rem;
+	padding: .25rem .5rem;
+}
+
+#left {
+	grid-column-start: 1;
+	justify-self: flex-start;
+	grid-row-start: 1;
+}
+
+#right {
+	grid-column-start: 3;
+	justify-self: flex-end;
+}
+
+/* ===== TOPBAR (2e section in header) ===== */
+header section:nth-of-type(2) {
+	display: grid;
+	/* [hamburger][logo][spacer][locator][account][cart] */
+	grid-template-columns: auto auto 1fr auto auto auto;
+	grid-template-rows: auto auto;
+	/* rij1 iconen, rij2 zoekbalk */
+	align-items: center;
+	gap: 1rem;
+	padding: .75rem var(--gap);
+	border-bottom: 1px solid #e5e7eb;
+}
+
+/* Logo formaat */
+header section:nth-of-type(2)>a[aria-label="Fender home"] img {
+	width: 96px;
+	height: auto;
+}
+
+/* Plaatsing rij 1 */
+header section:nth-of-type(2)>button[aria-controls="site-menu"] {
+	display: block;
+	width: 28px;
+	height: 28px;
+}
+
+/* HAMBURGER: altijd links, met zichtbare kleur */
+header section:nth-of-type(2)>button[aria-controls="site-menu"] {
+	grid-column: 1;
+	grid-row: 1;
+	color: #111;
+	/* ← belangrijk: maakt de SVG-lijnen donker */
+	background: transparent;
+	border: 0;
+	padding: .5rem;
+	cursor: pointer;
+}
+
+header section:nth-of-type(2)>a[aria-label="Fender home"] {
+	grid-column: 2;
+	grid-row: 1;
+}
+
+header section:nth-of-type(2)>a[aria-label="Winkels"] {
+	grid-column: 4;
+	grid-row: 1;
+	justify-self: end;
+}
+
+header section:nth-of-type(2)>a[aria-label="Account"] {
+	grid-column: 5;
+	grid-row: 1;
+	justify-self: end;
+}
+
+header section:nth-of-type(2)>a[aria-label="Winkelwagen"] {
+	grid-column: 6;
+	grid-row: 1;
+	justify-self: end;
+}
+
+/* Rij 2: zoekbalk over de volle breedte */
+header section:nth-of-type(2)>form[role="search"] {
+	grid-column: 1 / -1;
+	grid-row: 2;
+	position: relative;
+	display: grid;
+	grid-template-columns: 1fr;
+	/* input pakt alles, icoon doen we als ::before */
+	align-items: center;
+
+	padding: .1rem 1.25rem .1rem 2.75rem;
+	/* links ruimte voor 🔍 */
+	border-radius: 999px;
+	border: solid #eee;
+	background: #f3f3f3;
+}
+
+/* 🔍 in de pill links */
+header section:nth-of-type(2)>form[role="search"]::before {
+	content: "🔍";
+	position: absolute;
+	left: 1rem;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 1.15rem;
+	opacity: .65;
+}
+
+/* Input clean */
+header section:nth-of-type(2)>form[role="search"] input[type="search"] {
+	width: 100%;
+	border: 0;
+	outline: 0;
+	background: transparent;
+	font-size: clamp(16px, 4.2vw, 20px);
+	color: #444;
+}
+
+
+header section:nth-of-type(2)>form[role="search"] input[type="search"] {
+	width: 100%;
+	border: 0;
+	background: transparent;
+	outline: 0;
+	font-size: 1rem;
+}
+
+header section:nth-of-type(2)>form[role="search"]>button {
+	background: transparent;
+	border: 0;
+	cursor: pointer;
+	padding: 0;
+	font-size: 1.2rem;
+}
+
+/* icons rechts (account/cart) */
+header section:nth-of-type(2)>a[aria-label] {
+	padding: .25rem .5rem;
+}
+
+/* hamburgerknop in dezelfde 2e section */
+header button[aria-controls="site-menu"] {
+	background: transparent;
+	border: 0;
+	cursor: pointer;
+	padding: .5rem;
+}
+
+header section:nth-of-type(2)>form[role="search"] {
+	position: relative;
+}
+
+header section:nth-of-type(2)>form[role="search"] input[type="search"] {
+	padding-left: 2.2rem;
+	/* ruimte voor icoon */
+}
+
+
+/* verberg alléén het desktopmenu, niet #site-menu */
+header section:nth-of-type(2)>nav:not(#site-menu)[aria-label="Hoofd navigatie"] {
+	display: none;
+}
+
+@media (min-width:1000px) {
+	header section:nth-of-type(2)>nav:not(#site-menu)[aria-label="Hoofd navigatie"] {
+		display: block;
+	}
+}
+
+
+#scrim[hidden],
+#site-menu[hidden] {
+	display: none;
+}
+
+/* klikbare padding voor iconen rechts */
+header section:nth-of-type(2)>a[aria-label] {
+	padding: .25rem;
+}
+
+/* maak de zoekbalk wat los van de bovenrij */
+header section:nth-of-type(2)>form[role="search"] {
+	margin-top: .75rem;
+}
+
+/* hamburger button zelf neutraal */
+header button[aria-controls="site-menu"] {
+	background: transparent;
+	border: 0;
+	padding: .5rem;
+	cursor: pointer;
+}
+
+
+/*********************/
+/* HAMBURGER DRAWER */
+/*********************/
+#scrim {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, .4);
+	backdrop-filter: saturate(80%) blur(2px);
+	z-index: 80;
+}
+
+#site-menu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: min(92vw, 480px);
+	z-index: 90;
+	background: #fff;
+	transform: translateX(-100%);
+	transition: transform .3s ease;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+	padding: 24px;
+	overflow: auto;
+}
+
+#site-menu[data-open="true"] {
+	transform: translateX(0);
+}
+
+#site-menu div {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+#site-menu div button {
+	background: transparent;
+	border: 0;
+	cursor: pointer;
+	font-size: 28px;
+	line-height: 1;
+	padding: .25rem;
+}
+
+#site-menu p {
+	margin: 28px 0 16px;
+	color: #e11d28;
+	font-weight: 800;
+	font-size: clamp(18px, 4.2vw, 28px);
+}
+
+#site-menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	gap: 24px;
+}
+
+#site-menu li a {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-weight: 800;
+	letter-spacing: .01em;
+	color: #111;
+	font-size: clamp(2.2rem, 3vw, 3.6rem);
+	padding-right: 6px;
+}
+
+#site-menu li a::after {
+	content: "›";
+	font-size: 1.2em;
+	opacity: .65;
+}
+
+#site-menu li a:hover,
+#site-menu li a:focus-visible {
+	background: #f6f6f6;
+}
+
+/* scroll lock wanneer open (JS zet attribuut op <html>) */
+html[data-menu-open="true"] {
+	overflow: hidden;
+}
+
+/*********************/
+/* HERO (banner in header — jouw huidige HTML) */
+/*********************/
+header section:nth-child(3) section {
+	display: flex;
+	min-height: 40vh;
+}
+
+header section:nth-child(3) img[alt*="Banner"] {
+	width: 100vw;
+	height: 85vw;
+	position: relative;
+	filter: brightness(0.7);
+}
+
+.banner {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	align-self: center;
+}
+
+/* hero-tekst op het beeld */
+
+
+header section:nth-child(3) h2 {
+	font-size: .9em;
+	/* flexibel */
+	color: #ffffff;
+}
+
+header section:nth-child(3) p:nth-of-type(1) {
+	color: #ffffff;
+	font-size: 2em;
+	line-height: .9em;
+}
+
+header section:nth-child(3) p:nth-of-type(2) {
+	color: #ffffff;
+	font-size: .9em;
+	line-height: 1.2em;
+}
+
+header section:nth-child(3) button {
+	display: flex;
+	background: #111;
+	color: #fff;
+	border-radius: 3em;
+	font-size: .8em;
+	margin-top: 1em;
+	padding: .5em;
+	width: 30%;
+	justify-content: center;
+	align-self: center;
+}
+
+@media (max-width:700px) {
+	header h2 {
+		margin-top: -80px;
+	}
+}
+
+/*********************/
+/* PILLS NAV direct onder header */
+/*********************/
+main nav {
+	position: relative;
+	z-index: 2;
+	background: #fff;
+}
+
+main nav ul {
+	list-style: none;
+	margin: 12px 0;
+	padding: 0 var(--gap);
+	display: flex;
+	gap: .5rem;
+	overflow: auto;
+}
+
+main nav a {
+	display: inline-block;
+	border: 1px solid #e5e7eb;
+	padding: .5rem .9rem;
+	border-radius: 999px;
+	white-space: nowrap;
+}
+
+main nav a:hover,
+main nav a:focus-visible {
+	background: #111;
+	color: #fff;
+	border-color: #111;
+}
+
+/*********************/
+/* MAIN SECTIES */
+/*********************/
+
+/* ===== Sectie 1: Back to School grid (in jouw HTML is dit de EERSTE section in main) ===== */
+main section:nth-of-type(1) section {
+	display: grid;
+	grid-template-rows: auto 1fr;
+	/* rij 1 = titel, rij 2 = kaarten */
+	grid-auto-flow: column;
+	/* auto geplaatste items in kolommen */
+	grid-auto-columns: 50%;
+	/* kaartbreedte ~80% van viewport */
+	gap: clamp(12px, 3vw, 20px);
+	overflow-x: auto;
+	padding-inline: var(--gap);
+	scroll-snap-type: inline mandatory;
+	scroll-padding-inline: var(--gap);
+	/* mooie “gutter” aan de randen */
+	/* soepel op iOS */
+	scrollbar-width: none;
+	/* Firefox: verberg scrollbar */
+}
+
+main section:nth-of-type(1) section h2 {
+	grid-row: 1;
+	grid-column: 1 / -1;
+	margin: 0;
+	position: sticky;
+	top: 0;
+}
+
+main section:nth-of-type(1) section article {
+	background: white;
+	/* zachte grijze plaat */
+	padding: clamp(12px, 2.5vw, 16px);
+	gap: 8px;
+	grid-row: 2;
 }
 
 
 
+main section:nth-of-type(1) section article img {
+	margin: auto;
+	background: radial-gradient(120% 70% at 50% 30%, #ffffff 0%, #f3f3f3 60%, #ededed 100%);
+	/* “spotlight” achter product */
+	display: grid;
+	place-items: center;
+	aspect-ratio: 4 / 4;
+	/* vaste hoge plaat */
+	overflow: hidden;
+}
 
 
-/****************/
-/* JOUW STYLING */
-/****************/
+main section:nth-of-type(1) section img {
+	width: 100%;
+	border-radius: var(--radius);
+	transform: rotate(270deg);
+	margin-bottom: .5em;
+}
 
-/* jouw code */
+main section:nth-of-type(1) section img[alt*='FE405 Electric Gig Bag'] {
+	transform: rotate(0deg);
+	margin-bottom: 1em;
+}
 
+/* Tekstblokken onder de visual */
+main section:nth-of-type(1) section article>p:first-of-type {
+	/* merk */
+	margin: 4px 0 0;
+	color: var(--muted);
+	font-weight: 600;
+	font-size: .7em;
+}
+
+main section:nth-of-type(1) section article>h3 {
+	/* productnaam */
+	margin: 2px 0;
+	font-size: .7em;
+}
+
+main section:nth-of-type(1) section article>p:nth-of-type(2) {
+	/* prijsregel */
+	margin: 2px 0 0;
+	font-size: .7em;
+}
+
+main section:nth-of-type(1) section article>p:nth-of-type(2) s {
+	color: var(--muted);
+	margin-right: .4ch;
+	font-size: .9em;
+}
+
+main section:nth-of-type(1) section article>p:nth-of-type(3) {
+	/* bv. “3 Colors” */
+	margin: 6px 0 0;
+	color: var(--muted);
+	font-size: .7em;
+}
+
+/* de prijsregel (op basis van jouw patroon) */
+
+/* ===== Sectie 2: Top Models (4 tegels) ===== */
+main section:nth-of-type(2) section {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 10px .8em;
+	padding-inline: var(--gap);
+}
+
+
+main section:nth-of-type(2) article {
+	position: relative;
+	overflow: hidden;
+}
+
+main section:nth-of-type(2) article {
+	width: 48%;
+}
+
+main section:nth-of-type(2) article span {
+	position: absolute;
+	left: clamp(.8rem, 2vw, 16em);
+	bottom: clamp(8px, 2vw, 16px);
+	margin: 0;
+	color: #fff;
+	font-weight: 800;
+	font-size: clamp(1rem, 2.8vw, 1.25rem);
+	text-shadow: 0 2px 6px rgba(0, 0, 0, .35);
+	z-index: 1;
+}
+
+/* ===== Sectie 3: 2 brede visuals (Trending/New Releases) ===== */
+main section:nth-of-type(3) article {
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	gap: 1em;
+	padding-block: clamp(16px, 4vw, 40px);
+}
+
+
+main section:nth-of-type(3) article img {
+	display: block;
+	width: 100%;
+	overflow: hidden;
+	padding-inline: var(--gap);
+}
+
+main section:nth-of-type(3) article:nth-of-type(1) p:first-of-type {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	position: absolute;
+	left: 5%;
+	font-size: .9em;
+}
+
+main section:nth-of-type(3) article:nth-of-type(1) p:nth-of-type(2) {
+	display: flex;
+	align-items: flex-end;
+	position: absolute;
+	left: 5%;
+	font-size: .9em;
+	top: 23em;
+}
+
+main section:nth-of-type(3) article:nth-of-type(2) p:first-of-type {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	position: absolute;
+	left: 5%;
+	font-size: .9em;
+}
+
+main section:nth-of-type(3) article:nth-of-type(2) p:nth-of-type(2) {
+	display: flex;
+	align-items: flex-end;
+	position: absolute;
+	left: 5%;
+	font-size: .9em;
+	top: 23em;
+}
+
+main section:nth-of-type(3) p {
+	color: #fff;
+	font-weight: 800;
+	font-size: clamp(1rem, 2.8vw, 1.25rem);
+	text-shadow: 0 2px 6px rgba(0, 0, 0, .35);
+}
+
+/* ===== Sectie 4: Beginner Essentials (kop + pills) ===== */
+main>section:nth-of-type(4) {
+	padding-block: clamp(24px, 5vw, 48px);
+}
+
+main>section:nth-of-type(4)>h2 {
+	margin: 0 0 .75rem;
+}
+
+main>section:nth-of-type(4)>button {
+	border: 1px solid #e5e7eb;
+	background: #fff;
+	padding: .5rem .9rem;
+	border-radius: 999px;
+	margin-right: .5rem;
+	cursor: pointer;
+}
+
+main>section:nth-of-type(4)>button:hover {
+	background: #111;
+	color: #fff;
+	border-color: #111;
+}
+
+main section:nth-of-type(4) section {
+	display: grid;
+	grid-template-rows: auto 1fr;
+	/* rij 1 = titel, rij 2 = kaarten */
+	grid-auto-flow: column;
+	/* auto geplaatste items in kolommen */
+	grid-auto-columns: 50%;
+	/* kaartbreedte ~80% van viewport */
+	gap: clamp(12px, 3vw, 20px);
+	overflow-x: auto;
+	padding-inline: var(--gap);
+	scroll-snap-type: inline mandatory;
+	scroll-padding-inline: var(--gap);
+	/* mooie “gutter” aan de randen */
+	/* soepel op iOS */
+	scrollbar-width: none;
+	/* Firefox: verberg scrollbar */
+}
+
+main section:nth-of-type(4) section h2 {
+	grid-row: 1;
+	grid-column: 1 / -1;
+	margin: 0;
+	position: sticky;
+	top: 0;
+}
+
+main section:nth-of-type(4) section article {
+	background: white;
+	/* zachte grijze plaat */
+	padding: clamp(12px, 2.5vw, 16px);
+	gap: 8px;
+	grid-row: 2;
+}
+
+
+
+main section:nth-of-type(4) section article img {
+	margin: auto;
+	background: radial-gradient(120% 70% at 50% 30%, #ffffff 0%, #f3f3f3 60%, #ededed 100%);
+	/* “spotlight” achter product */
+	display: grid;
+	place-items: center;
+	aspect-ratio: 4 / 4;
+	/* vaste hoge plaat */
+	overflow: hidden;
+}
+
+
+main section:nth-of-type(4) section img {
+	width: 100%;
+	border-radius: var(--radius);
+	transform: rotate(270deg);
+	margin-bottom: .5em;
+}
+
+main section:nth-of-type(4) section img[alt*='FE405 Electric Gig Bag'] {
+	transform: rotate(0deg);
+	margin-bottom: 1em;
+}
+
+/* Tekstblokken onder de visual */
+main section:nth-of-type(4) section article>p:first-of-type {
+	/* merk */
+	margin: 4px 0 0;
+	color: var(--muted);
+	font-weight: 600;
+	font-size: .7em;
+}
+
+main section:nth-of-type(4) section article>h3 {
+	/* productnaam */
+	margin: 2px 0;
+	font-size: .7em;
+}
+
+main section:nth-of-type(4) section article>p:nth-of-type(2) {
+	/* prijsregel */
+	margin: 2px 0 0;
+	font-size: .7em;
+}
+
+main section:nth-of-type(4) section article>p:nth-of-type(2) s {
+	color: var(--muted);
+	margin-right: .4ch;
+	font-size: .9em;
+}
+
+main section:nth-of-type(4) section article>p:nth-of-type(3) {
+	/* bv. “3 Colors” */
+	margin: 6px 0 0;
+	color: var(--muted);
+	font-size: .7em;
+}
+
+/* de prijsregel (op basis van jouw patroon) */
+
+
+/* ===== Sectie 5: Mod Shop split (beeld + tekst) ===== */
+main section:nth-of-type(5) {
+	display: flex;
+	width: 100vw;
+	height: 100vw;
+	background: linear-gradient(to right, #080e1e 50%, #57adcd 50%)
+}
+
+main section:nth-of-type(5) article {
+	position: relative;
+	width: 100vw;
+	aspect-ratio: 2 / 1;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+}
+
+main>section:nth-of-type(5) article img[alt*='donkerblauw'] {
+	width: 100vw;
+	height: auto;
+	display: block;
+	object-fit: cover;
+}
+
+main section:nth-of-type(5) article h3,
+main section:nth-of-type(5) article p,
+main section:nth-of-type(5) article img[alt*='Fender Mod Shop'],
+main section:nth-of-type(5) article button {
+	width: 5em;
+	position: absolute;
+	color: #fff;
+	/* wit zodat zichtbaar op donkere foto */
+	margin: 0;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, .4);
+	/* beter leesbaar */
+	text-align: center;
+}
+
+main section:nth-of-type(5) article h3 {
+	top: 20%;
+	font-size: .9rem;
+	width: 10em;
+	top: 9em;
+}
+
+main section:nth-of-type(5) article p {
+	top: 35%;
+	font-size: .5rem;
+	width: 15em;
+	top: 25em;
+}
+
+main section:nth-of-type(5) article button {
+	top: 70%;
+	width: 9em;
+	padding: 1em;
+	color: #111;
+	background: #fff;
+	border: 0;
+	border-radius: 5em;
+	font-size: .7em;
+}
+
+main section:nth-of-type(5) article img[alt*='Fender Mod Shop'] {
+	margin-bottom: 17em;
+	width: 6em;
+	top: 5em;
+}
+
+/* ===== Sectie 6: Squier band (full-bleed licht) ===== */
+main>section:nth-of-type(6) {
+	margin-inline: calc(-1 * var(--gap));
+	/* full-bleed */
+	padding: clamp(28px, 6vw, 72px) var(--gap);
+	background: var(--band);
+	text-align: center;
+}
+
+main>section:nth-of-type(6) h4 {
+	font-size: clamp(22px, 4vw, 28px);
+	margin: .25rem 0 .5rem;
+}
+
+main>section:nth-of-type(6) p {
+	max-width: 60ch;
+	margin-inline: auto;
+	font-size: .8em;
+}
+
+main section:nth-of-type(6) button {
+	width: 9em;
+	padding: 1em;
+	background: #111;
+	color: #fff;
+	border: 0;
+	border-radius: 5em;
+	font-size: .7em;
+}
+
+/* ===== Sectie 7: Artist program banner (beeld + tekst) ===== */
+main>section:nth-of-type(7) {
+	display: flex;
+	width: 100vw;
+	height: 100vw;
+}
+
+main section:nth-of-type(7) article {
+	position: relative;
+	width: 100vw;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	justify-content: center;
+}
+
+main section:nth-of-type(7) article img[alt*='Fender Next'],
+main section:nth-of-type(7) article p,
+main section:nth-of-type(7) article button {
+	position: absolute;
+	left: 5%;
+}
+
+main>section:nth-of-type(7) img[alt*='2 gitaren'] {
+	width: 100%;
+}
+
+main section:nth-of-type(7) article img[alt*='Fender Next'] {
+	width: 30%;
+	top: 5em;
+}
+
+main>section:nth-of-type(7) p {
+	margin: .75rem 0 0;
+	color: white;
+	font-size: .9em;
+}
+
+main section:nth-of-type(7) article button {
+	top: 65%;
+	width: 9em;
+	padding: .8em;
+	color: #111;
+	background: #fff;
+	border: 0;
+	border-radius: 5em;
+	font-size: .9em;
+}
+
+/* ===== Sectie 8: leeg (laat ongemoeid) ===== */
+
+main section:nth-of-type(8) {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	/* 2 kolommen */
+	gap: 2rem;
+	/* ruimte tussen de blokken */
+	justify-items: center;
+	/* inhoud van elke cel in het midden */
+	align-items: start;
+	text-align: center;
+	/* tekst centreren */
+	padding-top: 5em;
+	padding-bottom: 5em;
+}
+
+main section:nth-of-type(8) article {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 8em;
+}
+
+/* Zorg dat img altijd netjes schaalt */
+main section:nth-of-type(8) img {
+	width: 30%;
+	/* afbeelding vult article */
+	height: auto;
+	display: block;
+
+}
+
+/* Tekst onder de foto */
+main section:nth-of-type(8) p {
+	margin: .5rem 0 0;
+	font-weight: 400;
+	font-size: .9em;
+	text-align: center;
+}
+
+/* ===== Sectie 9: Accessories/Parts/Merch/Collab (4 tegels) ===== */
+main section:nth-of-type(9) {
+	width: 100vw;
+}
+
+main>section:nth-of-type(9) article {
+	position: relative;
+}
+
+main>section:nth-of-type(9) img {
+	width: 100%;
+	height: auto;
+	/* behoudt de verhouding */
+	object-fit: cover;
+}
+
+main>section:nth-of-type(9) p {
+	position: absolute;
+	left: 15%;
+	top: 85%;
+	font-size: .9em;
+	color: #fff;
+	font-weight: 500;
+	text-shadow: 0 2px 6px rgba(0, 0, 0, .35);
+}
+
+main>section:nth-of-type(9) article:nth-of-type(2) p {
+	position: absolute;
+	left: 15%;
+	top: 75%;
+	font-size: .9em;
+	color: #fff;
+	font-weight: 500;
+	text-shadow: 0 2px 6px rgba(0, 0, 0, .35);
+}
+
+main>section:nth-of-type(9) article:nth-of-type(4) p {
+	position: absolute;
+	left: 15%;
+	top: 87%;
+	font-size: .9em;
+	color: #fff;
+	font-weight: 500;
+	text-shadow: 0 2px 6px rgba(0, 0, 0, .35);
+}
+
+/* ===== Sectie 10: Fender Studio (donkere band) ===== */
+main>section:nth-of-type(10) {
+	display: flex;
+	flex-direction: column;
+	background: var(--dark);
+	color: var(--darkText);
+	padding: clamp(28px, 6vw, 72px) var(--gap);
+	width: 100vw;
+	height: 130vw;
+
+}
+
+main section:nth-of-type(10) img[alt*='Fender Studio'] {
+	width: 6em;
+	left: 1%;
+	top: 17%;
+}
+
+main section:nth-of-type(10) img[alt*='laptop,telefoon,ipad'] {
+	width: 95vw;
+	left: 5%;
+	position: absolute;
+	display: block;
+}
+
+main>section:nth-of-type(10) h5 {
+	font-size: clamp(22px, 4vw, 28px);
+	top: 45%;
+}
+
+main>section:nth-of-type(10) a,
+main>section:nth-of-type(10) button {
+	display: inline-block;
+	margin-top: .5rem;
+	background: #fff;
+	color: #111;
+	border-radius: 2em;
+	padding: .6rem 1rem;
+	border: 0;
+	width: 7.5em;
+	font-weight: 600;
+	top: 35%;
+}
+
+main section:nth-of-type(10) article img[alt*='Fender Studio'],
+main section:nth-of-type(10) article h5,
+main section:nth-of-type(10) article a,
+main section:nth-of-type(10) article p {
+	position: relative;
+}
+
+main section:nth-of-type(10) article p {
+	top: 35%;
+	font-size: .9em;
+}
+
+/* ===== Sectie 11: Trending filters ===== */
+main>section:nth-of-type(11) {
+	padding-block: clamp(24px, 5vw, 48px);
+}
+
+main>section:nth-of-type(11)>h2 {
+	margin: 0 0 .75rem;
+}
+
+main>section:nth-of-type(11)>button {
+	border: 1px solid #e5e7eb;
+	background: #fff;
+	padding: .5rem .9rem;
+	border-radius: 999px;
+	margin-right: .5rem;
+	cursor: pointer;
+}
+
+main>section:nth-of-type(11)>button:hover {
+	background: #111;
+	color: #fff;
+	border-color: #111;
+}
+
+main section:nth-of-type(11) section {
+	display: grid;
+	grid-template-rows: auto 1fr;
+	/* rij 1 = titel, rij 2 = kaarten */
+	grid-auto-flow: column;
+	/* auto geplaatste items in kolommen */
+	grid-auto-columns: 50%;
+	/* kaartbreedte ~80% van viewport */
+	gap: clamp(12px, 3vw, 20px);
+	overflow-x: auto;
+	padding-inline: var(--gap);
+	scroll-snap-type: inline mandatory;
+	scroll-padding-inline: var(--gap);
+	/* mooie “gutter” aan de randen */
+	/* soepel op iOS */
+	scrollbar-width: none;
+	/* Firefox: verberg scrollbar */
+	width: 100vw;
+}
+
+main section:nth-of-type(11) section h2 {
+	grid-row: 1;
+	grid-column: 1 / -1;
+	margin: 0;
+	position: sticky;
+	top: 0;
+}
+
+main section:nth-of-type(11) section article {
+	background: white;
+	/* zachte grijze plaat */
+	padding: clamp(12px, 2.5vw, 16px);
+	gap: 8px;
+	grid-row: 2;
+}
+
+
+
+main section:nth-of-type(11) section article img {
+	margin: auto;
+	background: radial-gradient(120% 70% at 50% 30%, #ffffff 0%, #f3f3f3 60%, #ededed 100%);
+	/* “spotlight” achter product */
+	display: grid;
+	place-items: center;
+	aspect-ratio: 4 / 4;
+	/* vaste hoge plaat */
+	overflow: hidden;
+}
+
+
+main section:nth-of-type(11) section img {
+	width: 100%;
+	border-radius: var(--radius);
+	transform: rotate(270deg);
+	margin-bottom: .5em;
+}
+
+main section:nth-of-type(11) section img[alt*='FE405 Electric Gig Bag'] {
+	transform: rotate(0deg);
+	margin-bottom: 1em;
+}
+
+/* Tekstblokken onder de visual */
+main section:nth-of-type(11) section article>p:first-of-type {
+	/* merk */
+	margin: 4px 0 0;
+	color: var(--muted);
+	font-weight: 600;
+	font-size: .7em;
+}
+
+main section:nth-of-type(11) section article>h3 {
+	/* productnaam */
+	margin: 2px 0;
+	font-size: .7em;
+}
+
+main section:nth-of-type(11) section article>p:nth-of-type(2) {
+	/* prijsregel */
+	margin: 2px 0 0;
+	font-size: .7em;
+}
+
+main section:nth-of-type(11) section article>p:nth-of-type(2) s {
+	color: var(--muted);
+	margin-right: .4ch;
+	font-size: .9em;
+}
+
+main section:nth-of-type(11) section article>p:nth-of-type(3) {
+	/* bv. “3 Colors” */
+	margin: 6px 0 0;
+	color: var(--muted);
+	font-size: .7em;
+}
+
+/* ===== Sectie 12: Spotlight Stories (donker) ===== */
+/* Hele sectie */
+main>section:nth-of-type(12) {
+	background: #000;
+	color: #fff;
+	padding-top: 5em;
+	padding-bottom: 3em ;
+}
+
+/* Titel */
+main>section:nth-of-type(12)>h5 {
+	margin: 1em;
+	font-size: 1.3em;
+	left: 10%;
+	bottom: 5%;
+}
+
+/* De horizontale “track” = geneste section */
+main>section:nth-of-type(12)>section {
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: 80%;
+	overflow-x: auto;
+	scroll-snap-type: inline mandatory;
+	scrollbar-width: none;
+	/* Firefox: verberg scrollbar */
+}
+
+main>section:nth-of-type(12)>section::-webkit-scrollbar {
+	display: none;
+}
+
+/* Kaarten */
+main>section:nth-of-type(12)>section>article {
+	position: relative;
+	background: #111;
+	border-radius: var(--radius);
+	overflow: hidden;
+	scroll-snap-align: start;
+}
+
+main>section:nth-of-type(12)>section>article>img {
+	width: 100%;
+	display: block;
+
+}
+
+main>section:nth-of-type(12)>section img[alt*='parts and Accessories'] {
+	margin-left: 7%;
+}
+
+/* Tekst over de afbeelding */
+main>section:nth-of-type(12)>section>article>p {
+	position: absolute;
+	left: 10%;
+	right: clamp(12px, 2.5vw, 24px);
+	margin: 0;
+	z-index: 1;
+	text-shadow: 0 2px 6px rgba(0, 0, 0, .35);
+}
+
+main>section:nth-of-type(12)>section>article>p:nth-of-type(1) {
+	top: clamp(10px, 2vw, 18px);
+	font-size: .9rem;
+	font-weight: 600;
+	opacity: .95;
+}
+
+main>section:nth-of-type(12)>section>article>p:nth-of-type(2) {
+	bottom: clamp(14px, 3vw, 22px);
+	font-size: .8em;
+	font-weight: 500;
+}
+
+/* Knop netjes onder de scroller, gecentreerd */
+main>section:nth-of-type(12)>button {
+	display: block;
+	margin-top: 2em;
+	margin-left: 1em;
+	background: #fff;
+	color: #111;
+	border: 0;
+	border-radius: 2em;
+	padding: 1em;
+	width: 15em;
+}
+
+
+/* ===== Sectie 13: Heritage blok ===== */
+main>section:nth-of-type(13) {
+margin-top: 10em;
+margin-bottom: 10em;
+	text-align: center;
+	padding-block: clamp(24px, 5vw, 56px);
+	position: relative;          /* referentie voor absolute posities */
+	text-align: center;
+}
+
+main>section:nth-of-type(13) img {
+	width: 90%;
+	max-width: 920px;
+	margin-inline: auto;
+}
+
+main > section:nth-of-type(13) h6 {
+	position: absolute;
+	top: 0;                      /* zet hoog in de sectie */
+	left: 50%;
+	transform: translateX(-50%); /* mooi centreren */
+	font-size: 7em; 
+	font-weight: 900;
+	color: rgba(0,0,0,0.09);     /* licht grijs/transparant effect */
+	z-index: 0;                  /* achter andere tekst */
+	margin: 0;
+  }
+  
+  main > section:nth-of-type(13) p:first-of-type {
+	position: relative;
+	z-index: 1;                  /* bovenop */
+	font-size: 2em;
+	font-weight: 700;
+	margin-top: 2.5em;
+	line-height: 1em;
+	margin-left: 1em;
+	margin-right: 1em;
+  }
+
+/*********************/
+/* FOOTER */
+/*********************/
+footer {
+	margin-top: clamp(32px, 8vw, 96px);
+	background: #111;
+	color: #fff;
+}
+
+footer>div {
+	max-width: var(--container);
+	margin-inline: auto;
+	padding: clamp(24px, 4vw, 48px) var(--gap);
+}
+
+footer a {
+	color: #fff;
+}
+
+footer .legal {
+	opacity: .8;
+	font-size: .9rem;
+	padding-top: 1rem;
+	border-top: 1px solid rgba(255, 255, 255, .15);
+}

@@ -56,7 +56,9 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   <summary>uitwerken na test in 2<sup>e</sup> werkgroep</summary>
 
   ### Bevindingen
-  Lijst met je bevindingen die in de test naar voren kwamen:
+  Lijst met je bevindingen die in de test naar voren kwamen: Tekst is erg klein is moeilijk te lezen voor slechtziende. het kleurcontrast is wel duidelijk. 
+
+  Met de voice over op de billie site is het heel onduidelijk alles wordt voorgelezen hoe je het uit code zou halen. Het gaat heel snel en er valt geen touw aan vast te knopen. Alles wordt heel snel voorgelezen, een slide show van fotos wordt per foto verteld wat het is beetje overbodig per foto als je dat niet perse hoeft te weten. Op de apple site was eht nog wel duidelijk soms de achtergrond afbeeldingen die werden onduidelijk voorgelezen maar over het algemeen kon je er vrij makkelijk doorheen bewegen. Als je op een link stond werd verteld wat het was en waar je naartoe beweegt en hoe je die moest activeren 
 
 </details>
 
