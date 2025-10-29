@@ -45,3 +45,15 @@ scrim?.addEventListener('click', closeMenu);
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && menu?.getAttribute('data-open') === 'true') closeMenu();
 });
+
+
+// Alleen één accordion open in sectie 16
+const sect16 = document.querySelector('main > section:nth-of-type(16)');
+if (sect16) {
+  sect16.addEventListener('toggle', (e) => {
+    if (e.target.tagName !== 'DETAILS' || !e.target.open) return;
+    sect16.querySelectorAll('details[open]').forEach(d => {
+      if (d !== e.target) d.open = false;
+    });
+  });
+}

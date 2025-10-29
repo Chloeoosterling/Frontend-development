@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affinity series Telecaster</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="scripts/script.js" defer></script>
+</head>
+<body>
+    <header role="banner">
+        <!-- 1) Promotiebalk -->
+        <section role="region" aria-label="Promotie">
+          <p><strong>NEW:</strong> Limited edition Vintera || Road Worn</p>
+          <button id="right" aria-label="Volgende promotie">⃗</button>
+          <button id="left" aria-label="Vorige promotie">⃖</button>
+        </section>
+    
+        <!-- 2) Topbar: logo / desktopnav / zoeken / account / cart / hamburger -->
+        <section>
+    
+    
+          <a href="#" aria-label="Fender home">
+            <img src="images/fender_logo_1.svg" alt="Fender" />
+          </a>
+    
+    
+    
+          <!-- Scrim en drawer -->
+    
+    
+    
+          <div id="scrim" hidden></div>
+    
+          <nav id="site-menu" aria-label="Hoofd navigatie" hidden>
+            <div>
+              <img src="images/fender_logo_1.svg" alt="Fender" width="96" height="28" />
+              <button type="button" aria-label="Sluit menu">✕</button>
+            </div>
+            <p><strong>SALE: Back to School</strong></p>
+            <ul>
+              <li><a href="#new">New & Trending</a></li>
+              <li><a href="#modshop">Mod Shop</a></li>
+              <li><a href="#electric">Electric Guitars</a></li>
+              <li><a href="#basses">Basses</a></li>
+              <li><a href="#acoustics">Acoustics</a></li>
+              <li><a href="#squier">Squier</a></li>
+              <li><a href="#amps">Amplifiers & Effects</a></li>
+              <li><a href="#parts">Parts</a></li>
+              <li><a href="#accessories">Accessories & Merch</a></li>
+            </ul>
+          </nav>
+    
+          <!-- Desktop hoofdnavigatie -->
+          <nav aria-label="Hoofd navigatie">
+            <ul>
+              <li><a href="#guitars">Gitaren</a></li>
+              <li><a href="#basses">Bassen</a></li>
+              <li><a href="#amps">Versterkers</a></li>
+              <li><a href="#shop">Shop</a></li>
+            </ul>
+          </nav>
+    
+          <!-- Zoeken -->
+          <form role="search" aria-label="Zoeken op site">
+            <input type="search" name="q" placeholder="What can we help you find?" aria-label="Zoekterm" />
+    
+          </form>
+    
+          <!-- Icons -->
+          <a href="#locator" aria-label="Winkels">📍</a>
+          <a href="#account" aria-label="Account">👤</a>
+          <a href="#cart" aria-label="Winkelwagen"><span aria-live="polite">🛒 0</span></a>
+    
+          <button type="button" aria-label="Menu" aria-controls="site-menu" aria-expanded="false">
+            <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+              <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
+        </section>
+    
+        <!-- 3) Hero in header (zoals jouw huidige structuur) -->
+        <section>
+          <img src="images/headerbanner.jpg.webp" alt="Banner back to school" />
+          <section class="banner">
+            <h2>Up to 20% off</h2>
+            <p><strong>School's Back. Plug In.</strong></p>
+            <p>Rock the new school year, learn new skills or develop hobbies with great savings on guitars, amps &amp; more.
+            </p>
+            <button>Shop Now</button>
+          </section>
+        </section>
+    
+      </header>
+
+    <main>
+
+        <section>
+            <article>
+              <img src="images/Check.png.avif" alt="">
+              <p>Fender-certified high quality assurance</p>
+            </article>
+            <article>
+              <img src="images/Bestelbus.png.avif" alt="">
+              <p>Free standard shipping on all orders over 49€.</p>
+            </article>
+            <article>
+              <img src="images/returns-icon.png.avif" alt="">
+              <p>Easy returns & exchanges within 30 days of receipt</p>
+            </article>
+      
+            <article>
+              <img src="images/support-icon.png.avif" alt="">
+              <p>Get support from our expert gear advisor</p>
+            </article>
+          </section>
+    </main>
+
+    <footer role="contentinfo">
+        <!-- Rij 1: Land & Taal (beide als uitschuifmenu) -->
+        <section aria-label="Land en taal">
+          <details>
+            <summary>
+              <span role="img" aria-label="Nederlandse vlag">🇳🇱</span>
+              <span>Netherlands</span>
+            </summary>
+      
+            <!-- dropdown-inhoud -->
+            <section aria-label="Kies land">
+              <form role="search" aria-label="Zoek land">
+                <input type="search" placeholder="Search country" />
+              </form>
+              <ul>
+                <li><a href="#">🇬🇧 United Kingdom</a></li>
+                <li><a href="#">🇫🇷 France</a></li>
+                <li><a href="#">🇩🇪 Germany</a></li>
+                <li><a href="#">🇪🇸 Spain</a></li>
+                <li><a href="#">🇮🇹 Italy</a></li>
+              </ul>
+            </section>
+          </details>
+      
+          <details>
+            <summary><span>English</span></summary>
+      
+            <!-- dropdown-inhoud -->
+            <section aria-label="Kies taal">
+              <ul>
+                <li><a href="#">Français</a></li>
+                <li><a href="#">Deutsch</a></li>
+                <li><a href="#">Italiano</a></li>
+                <li><a href="#">日本語</a></li>
+                <li><a href="#">Português (Portugal)</a></li>
+              </ul>
+            </section>
+          </details>
+        </section>
+      
+        <!-- Rij 2: Socials -->
+        <section aria-label="Social media">
+          <nav aria-label="Social links">
+            <ul>
+              <li><a href="#" aria-label="Instagram">📷</a></li>
+              <li><a href="#" aria-label="Facebook">f</a></li>
+              <li><a href="#" aria-label="YouTube">▶︎</a></li>
+              <li><a href="#" aria-label="TikTok">♫</a></li>
+              <li><a href="#" aria-label="X">𝕏</a></li>
+            </ul>
+          </nav>
+        </section>
+      
+        <!-- Rij 3: Juridische links -->
+        <nav aria-label="Footer">
+          <ul>
+            <li><a href="#">Privacy Portal</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Supply Chain Transparency</a></li>
+            <li><a href="#">Accessibility Statement</a></li>
+            <li><a href="#">Competition Law</a></li>
+            <li><a href="#">Unsolicited Ideas Submission Policy</a></li>
+          </ul>
+        </nav>
+      
+        <!-- Rij 4: Disclaimers -->
+        <p>*Prices at the sole discretion of retailers</p>
+        <p>Copyright © 2025 Fender Musical Instruments Corporation. All Rights Reserved.</p>
+      </footer>
+</body>
+</html>
